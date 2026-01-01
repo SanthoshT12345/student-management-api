@@ -7,17 +7,17 @@ app.use(express.json());
 
 let students = [];
 
-
+// This for hosting 
 app.get('/', (req, res) => {
     res.send('Student Management API is running');
 });
 
-
+// This is for fetching data from the base so far entered
 app.get('/students', (req, res) => {
     res.json(students);
 });
 
-
+//To insert the data one by one
 app.post('/students', (req, res) => {
     const { name, age, dept } = req.body;
 
@@ -33,7 +33,7 @@ app.post('/students', (req, res) => {
 });
 
 
-
+// Using student ID to upadate the data
 app.put('/students/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const { name, age, dept } = req.body;
@@ -50,6 +50,8 @@ app.put('/students/:id', (req, res) => {
 
     res.json(student);
 });
+
+// This is for Update the data using name of the data
 app.put('/students/name/:name', (req, res) => {
     const nameParam = req.params.name.toLowerCase();
     const { name, age, dept } = req.body;
@@ -69,7 +71,7 @@ app.put('/students/name/:name', (req, res) => {
     res.json(student);
 });
 
-
+// delete the data using ID
 app.delete('/students/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
